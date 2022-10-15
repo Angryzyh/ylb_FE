@@ -7,7 +7,7 @@ export function httpGet(url,parameter) {
 	return axios({
 		url: url,
 		method: "get",
-		parameter: parameter,
+		params: parameter,
 	});
 }
 
@@ -15,6 +15,7 @@ export function httpGet(url,parameter) {
 export function httpPost(url, parameter) {
 	return axios({
 		url: url,
+		method: "post",
 		data: parameter,
 	})
 }

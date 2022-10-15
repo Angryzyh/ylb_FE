@@ -84,7 +84,7 @@
 				<span class="new-tag">新用户专享</span>
 			</div>
 			
-			<h2 class="public-title"><span>优选产品</span> <a class="public-title-more" href="list.html" target="_blank">查看更多产品>></a></h2>
+			<h2 class="public-title"><span>优选产品</span> <a class="public-title-more" href="javascript:void(0)" @click="toPage('/web/list',{productType:indexProductListBo.preferredList[0].productType})">查看更多产品>></a></h2>
 			<ul class="preferred-select clearfix">
 				<li v-for="(preferredProduct,index) in indexProductListBo.preferredList" :key="preferredProduct.id">
 					<h3 class="preferred-select-title">
@@ -114,7 +114,7 @@
 				</li>
 			</ul>
 			
-			<h2 class="public-title"><span>散标产品</span> <a class="public-title-more" href="list.html" target="_blank">查看更多产品>></a></h2>
+			<h2 class="public-title"><span>散标产品</span> <a class="public-title-more" href="javascript:void(0)" @click="toPage('/web/list',{productType:indexProductListBo.scattererList[0].productType})">查看更多产品>></a></h2>
 			<ul class="preferred-select clearfix">
 				<li v-for="scattererProduct in indexProductListBo.scattererList" :key="scattererProduct.id">
 					<h3 class="preferred-select-title1">个人信用消费借款
@@ -138,7 +138,7 @@
 						{{ scattererProduct.productDesc }},
 						优选计划项目，投资回报周期1个月，起点低，适合短期资金周转、对流动性要求高的投资人。
 					</p>
-					<a class="preferred-select-btn" href="javascript:void(0)" @click="toPage('/web/details',{productId:scattererProduct.id})"></a>
+					<a class="preferred-select-btn" href="javascript:void(0)" @click="toPage('/web/details',{productId:scattererProduct.id})">立即投资</a>
 				</li>
 			</ul>
 		</div>
@@ -283,13 +283,16 @@ export default {
 			.catch(error=>{
 				console.log(error);
 			})*/
-		
 		// 封装axios的 get请求
 		httpGet('/index/banner').then(resp => {
-			this.indexBannerBo = resp.data.data.indexBannerBo;
+			if (resp.data.code === "00000") {
+				this.indexBannerBo = resp.data.data.indexBannerBo;
+			}
 		})
 		httpGet('/index/product').then(resp => {
-			this.indexProductListBo = resp.data.data.indexProductListBo;
+			if (resp.data.code === "00000") {
+				this.indexProductListBo = resp.data.data.indexProductListBo;
+			}
 		})
 	},
 	// 生命周期 - 创建之前

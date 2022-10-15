@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css'
 
 import '@/assets/css/details.css'
 import '@/assets/css/font-awesome.min.css'
@@ -13,5 +15,9 @@ import '@/assets/css/swiper.css'
 import '@/assets/css/user_center.css'
 import '@/assets/css/user_pay.css';
 
-createApp(App).use(router).mount('#app')
+
+createApp(App)
+	.use(router)
+	.use(ElementPlus)
+	.mount('#app');
 

@@ -11,6 +11,11 @@ const routes = [
     path: '/web/details',
     name: 'details',
     component: () => import('../views/DetailsView.vue')
+  },
+  {
+    path: '/web/list',
+    name: 'list',
+    component: () => import('../views/ListView.vue')
   }
 ]
 
